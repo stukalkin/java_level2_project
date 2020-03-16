@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class ClientGUI extends JFrame implements ActionListener, Thread.UncaughtExceptionHandler {
 
@@ -49,6 +51,26 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         JScrollPane scrollUsers = new JScrollPane(userList);
         scrollUsers.setPreferredSize(new Dimension(100, 0));
         cbAlwaysOnTop.addActionListener(this);
+        tfMessage.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                String text = tfMessage.getText();
+                    if (e.getKeyCode() == 10) {
+                        log.append(text + "\n");
+                        tfMessage.setText("");
+                   }
+                }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        });
 
         panelTop.add(tfIPAddress);
         panelTop.add(tfPort);
