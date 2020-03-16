@@ -51,6 +51,7 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         JScrollPane scrollUsers = new JScrollPane(userList);
         scrollUsers.setPreferredSize(new Dimension(100, 0));
         cbAlwaysOnTop.addActionListener(this);
+        btnSend.addActionListener(this);
         tfMessage.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -59,9 +60,8 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
 
             @Override
             public void keyPressed(KeyEvent e) {
-                String text = tfMessage.getText();
                     if (e.getKeyCode() == 10) {
-                        log.append(text + "\n");
+                        log.append(tfMessage.getText() + "\n");
                         tfMessage.setText("");
                    }
                 }
@@ -95,6 +95,9 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         Object src = e.getSource();
         if (src == cbAlwaysOnTop) {
             setAlwaysOnTop(cbAlwaysOnTop.isSelected());
+        } if (src == btnSend) {
+            log.append(tfMessage.getText() + "\n");
+            tfMessage.setText("");
         }
         else
             throw new RuntimeException("Unknown source: " + src);
