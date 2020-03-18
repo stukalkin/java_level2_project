@@ -23,7 +23,7 @@ public class ServerGUI extends JFrame implements ActionListener, Thread.Uncaught
                 new ServerGUI();
             }
         });
-        throw new RuntimeException("Hello from main");
+        //throw new RuntimeException("Hello from main");
     }
 
     private ServerGUI() {
@@ -48,8 +48,8 @@ public class ServerGUI extends JFrame implements ActionListener, Thread.Uncaught
         if (src == btnStart)
             chatServer.start(8189);
         else if (src == btnStop)
-//            chatServer.stop();
-            throw new RuntimeException("Hello from EDT");
+            chatServer.stop();
+            //throw new RuntimeException("Hello from EDT");
         else
             throw new RuntimeException("Unknown source: " + src);
     }

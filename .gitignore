@@ -2,3 +2,4 @@
 *.iml
 .gitignore.txt
 out/*
+log.*
